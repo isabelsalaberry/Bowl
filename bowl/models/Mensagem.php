@@ -8,8 +8,9 @@ use Yii;
  * This is the model class for table "mensagem".
  *
  * @property int $id
- * @property int $cliente_id
  * @property int $restaurante_id
+ * @property string $nome_cliente
+ * @property string $email
  * @property string $msg
  *
  * @property Cliente $cliente
@@ -31,10 +32,9 @@ class Mensagem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['cliente_id', 'restaurante_id', 'msg'], 'required'],
-            [['cliente_id', 'restaurante_id'], 'integer'],
-            [['msg'], 'string'],
-            [['cliente_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cliente::class, 'targetAttribute' => ['cliente_id' => 'id']],
+            [['restaurante_id', 'msg', 'email'], 'required'],
+            [['restaurante_id'], 'integer'],
+            [['msg', 'nome_cliente', 'email'], 'string'],
             [['restaurante_id'], 'exist', 'skipOnError' => true, 'targetClass' => Restaurante::class, 'targetAttribute' => ['restaurante_id' => 'id']],
         ];
     }
@@ -46,8 +46,9 @@ class Mensagem extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'cliente_id' => 'Cliente ID',
             'restaurante_id' => 'Restaurante ID',
+            'nome_cliente' => 'Nome Completo',
+            'email' => 'E-mail',
             'msg' => 'Msg',
         ];
     }

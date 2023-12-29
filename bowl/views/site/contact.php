@@ -11,58 +11,62 @@ use yii\captcha\Captcha;
 $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-contact">
+<div style="background-color:blanchedalmond;">
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?php if (Yii::$app->session->hasFlash('contactFormSubmitted')): ?>
+    <!--Container infos de localização-->
+    <div class="container-fluid" style="background-color: #E6294F;">
+        <div class="page-wrapper" style="border-style: none;">
+            <div class="row p-0" style="background-color: #E6294F;">
 
-        <div class="alert alert-success">
-            Thank you for contacting us. We will respond to you as soon as possible.
-        </div>
-
-        <p>
-            Note that if you turn on the Yii debugger, you should be able
-            to view the mail message on the mail panel of the debugger.
-            <?php if (Yii::$app->mailer->useFileTransport): ?>
-                Because the application is in development mode, the email is not sent but saved as
-                a file under <code><?= Yii::getAlias(Yii::$app->mailer->fileTransportPath) ?></code>.
-                Please configure the <code>useFileTransport</code> property of the <code>mail</code>
-                application component to be false to enable email sending.
-            <?php endif; ?>
-        </p>
-
-    <?php else: ?>
-
-        <p>
-            If you have business inquiries or other questions, please fill out the following form to contact us.
-            Thank you.
-        </p>
-
-        <div class="row">
-            <div class="col-lg-5">
-
-                <?php $form = ActiveForm::begin(['id' => 'contact-form']); ?>
-
-                    <?= $form->field($model, 'name')->textInput(['autofocus' => true]) ?>
-
-                    <?= $form->field($model, 'email') ?>
-
-                    <?= $form->field($model, 'subject') ?>
-
-                    <?= $form->field($model, 'body')->textarea(['rows' => 6]) ?>
-
-                    <?= $form->field($model, 'verifyCode')->widget(Captcha::class, [
-                        'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-6">{input}</div></div>',
-                    ]) ?>
-
-                    <div class="form-group">
-                        <?= Html::submitButton('Submit', ['class' => 'btn btn-primary', 'name' => 'contact-button']) ?>
+                <!--texto-->
+                <div class="col-sm-6">
+                    <div class="container text-center my-4" style="padding-left: 12%;">
+                        <h2 style="margin-top: 20%;font-family: Hey Comic; font-weight: normal; font-style: normal; text-align: left;">Informações de Contacto</h2>
+                        <h6 style="font-weight: lighter; text-align: left; margin-bottom: 12%;">
+                            Telefone: (+351) 000 000 000<br>
+                            Endereço: Rua dos Bowls, 000<br>
+                            E-mail: bowl@ipb.pt
+                        </h6>
                     </div>
+                </div>
 
-                <?php ActiveForm::end(); ?>
+                <!--mapa do ipb-->
+                <div class="col-sm-6 d-flex" style="margin-top: 6%; margin-bottom: 6%;justify-content: center;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11897.616632455503!2d-6.763110624096684!3d41.79805320943541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1spt-BR!2spt!4v1700479449734!5m2!1spt-BR!2spt" width="60%" height="auto" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
+                </div>
             </div>
         </div>
+    </div>
 
-    <?php endif; ?>
+
+
+
+    <!--Container form-->
+    <div class="page-wrapper" style="border-style: none;">
+
+        <?php $form = ActiveForm::begin(); ?>
+
+
+        <div class="container text-center my-4">
+            <?= $form->field($model, 'nome_cliente')->textInput() ?>
+        </div>
+
+        <div class="container text-center my-4">
+            <?= $form->field($model, 'email')->textInput(['style' => 'background-color: black; color: white']) ?>
+        </div>
+
+        <div class="container text-center my-4">
+            <?= $form->field($model, 'msg')->textarea(['rows' => 6]) ?>
+        </div>
+
+        <div class="form-group">
+            <?= Html::submitButton('Enviar', ['class' => 'btn btn-success']) ?>
+        </div>
+
+        <?php ActiveForm::end(); ?>
+
+    </div>
+
 </div>

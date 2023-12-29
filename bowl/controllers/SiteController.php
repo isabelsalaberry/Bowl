@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Mensagem;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -105,12 +106,17 @@ class SiteController extends Controller
      */
     public function actionContact()
     {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->contact(Yii::$app->params['adminEmail'])) {
-            Yii::$app->session->setFlash('contactFormSubmitted');
+        $model = new Mensagem();
+        $model->restaurante_id = 1;
 
-            return $this->refresh();
+        if ($this->request->isPost) {
+            if ($model->load($this->request->post()) && $model->save()) {
+                return $this->redirect(['contact']);
+            }
+        } else {
+            $model->loadDefaultValues();
         }
+
         return $this->render('contact', [
             'model' => $model,
         ]);

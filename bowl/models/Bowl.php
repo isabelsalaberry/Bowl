@@ -45,7 +45,7 @@ class Bowl extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'carrinho_id' => 'Carrinho ID',
-            'preco' => 'Preco',
+            'preco' => 'Preço',
         ];
     }
 
