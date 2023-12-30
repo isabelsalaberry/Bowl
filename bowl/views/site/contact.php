@@ -7,10 +7,8 @@
 use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 use yii\captcha\Captcha;
-
-$this->title = 'Contact';
-$this->params['breadcrumbs'][] = $this->title;
 ?>
+
 <div style="background-color:blanchedalmond;">
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -45,20 +43,26 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <!--Container form-->
     <div class="page-wrapper" style="border-style: none;">
+    
+    <!-- título da página - !!!ver o CSS!!!APAGAR -->
+    <div class="container text-center my-4">
+    <h2 style="margin-top: 12%; margin-bottom: 80px;font-family: Hey Comic; font-weight: normal; font-style: normal;">Formulário para Contacto</h2>
+    </div>
+
 
         <?php $form = ActiveForm::begin(); ?>
 
 
         <div class="container text-center my-4">
-            <?= $form->field($model, 'nome_cliente')->textInput() ?>
+            <?= $form->field($model, 'nome_cliente')->textInput(['style' => 'background-color: #EAD9BF; border: none;']) ?>
         </div>
 
         <div class="container text-center my-4">
-            <?= $form->field($model, 'email')->textInput(['style' => 'background-color: black; color: white']) ?>
+            <?= $form->field($model, 'email')->textInput(['style' => 'background-color: #EAD9BF; border: none;']) ?>
         </div>
 
         <div class="container text-center my-4">
-            <?= $form->field($model, 'msg')->textarea(['rows' => 6]) ?>
+            <?= $form->field($model, 'msg')->textarea(['rows' => 6, 'style' => 'background-color: #EAD9BF; border: none;']) ?>
         </div>
 
         <div class="form-group">
