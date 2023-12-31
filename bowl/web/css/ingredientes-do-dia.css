@@ -1,0 +1,145 @@
+
+.filters {
+    background-color: #E6294F;
+}
+
+.carrinho {
+    background-color: #9AB21C;
+}
+
+.button-filters {
+    border: none;
+    width: 100%;
+    background-color: #E6294F;
+    text-decoration: none;
+    color: black;
+}
+
+.button-filters:hover {
+    color: white;
+    background-color: #ff7792;
+}
+
+.div-filters {
+    padding: 0!important;
+}
+
+.btn-add {
+    border: none;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    background-color: #E6294F;
+    border-radius: 25px;
+}
+
+.btn-add:hover {
+    background-color: #ff7792!important;
+    color: white!important;
+}
+
+.badge-bowl {
+    background-color: #7B8E16; 
+    color: black;
+}
+
+.input-carrinho {
+    background-color: #9AB21C;
+    border-radius: 5px;
+    border-style: none;
+    border: none;
+    color:black;
+}
+
+.input-carrinho:focus-visible {
+    outline: none;
+}
+
+.container-table-stripped {
+    margin: 10px; 
+    margin-left: 12%;
+    margin-right: 12%;
+    padding-top: 10px;
+}
+
+.table-striped>tbody>tr:nth-child(even)>td, .table-striped>tbody>tr:nth-child(even)>th {
+    background-color: #7B8E16;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #96ab1a;
+}
+
+.table-striped > thead {
+    background-color: #7B8E16;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th {
+    border-style: none;
+}
+
+.form-check-label {
+    color:black;
+    font-weight: bold;
+}
+
+.form-check-input:disabled {
+    background-color: #9AB21C;
+    border-color: black;
+    opacity: 100%;
+}
+
+.form-check-input:disabled~.form-check-label, .form-check-input[disabled]~.form-check-label {
+    opacity: 100%;
+}
+
+.btn-bowl {
+    background-color: #7B8E16; 
+    color: black;
+    border-radius: 5px;
+    border-style: none;
+}
+
+.btn-bowl:hover {
+    background-color: #8ea51b;
+    color: white;
+}
+
+.btn-finish {
+    background-color: black;
+    color: white;
+    border-radius: 15px;
+    min-width: 40px;
+    border-style: none;
+}
+
+.btn-finish:hover {
+    background-color: white;
+    color: black;
+}
+
+.btn-modal {
+    color: gray;
+    border-radius: 15px;
+    min-width: 40px;
+    border-style: none;
+}
+
+.btn-modal:hover {
+    color: white;
+}
+
+.btn-add-bowl {
+    font-weight: bold;
+    color:black;
+    border: none;
+    padding: 5px;
+    background-color: #E6294F;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.btn-add-bowl:hover {
+    background-color: #ff7792!important;
+    color: white!important;
+}

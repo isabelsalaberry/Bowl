@@ -1,0 +1,55 @@
+footer {
+    background-color: #9AB21C;
+    min-height: 50px;
+    padding: 10px;
+}
+
+main {
+    background-color: blanchedalmond;
+}
+
+header {
+    background-color: blanchedalmond;
+    min-height: 170px;
+}
+
+.nav-bg-site {
+    border-radius: 10px; 
+    background-color: #9AB21C; 
+    padding: 5px;
+}
+
+
+.img-creators {
+    width: 60%;
+    max-width: 60%;
+    height: auto;
+    border-radius: 10%;
+ }
+
+
+.page-wrapper {
+    background-color: blanchedalmond;
+    margin: 0 auto;
+    max-width: 55%;
+    overflow: hidden;
+    border-left: 1px solid blanchedalmond;
+    border-right: 1px solid blanchedalmond;
+    padding: 0; 
+}      
+
+
+
+
+@font-face {
+    font-family: "HeyComic";
+    src: url("../font/HeyComic.ttf") format("truetype"),
+         url("../font/HeyComic.woff") format("woff"),
+         url("../font/HeyComic.woff2") format("woff2"),
+         url("../font/HeyComic.svg") format("svg"),
+         url("../font/HeyComic.otf") format("otf"),
+         url("../font/HeyComic.eot") format("eot");
+
+    font-weight: 400;
+    font-style: normal;
+}

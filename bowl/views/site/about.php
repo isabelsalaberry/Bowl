@@ -3,16 +3,45 @@
 /** @var yii\web\View $this */
 
 use yii\helpers\Html;
+use yii\bootstrap5\BootstrapAsset;
 
-$this->title = 'About';
-$this->params['breadcrumbs'][] = $this->title;
+BootstrapAsset::register($this);
+
+// Registro do arquivo CSS
+$this->registerCssFile(Yii::$app->request->baseUrl . '/css/sobre-nos.css', ['depends' => [BootstrapAsset::class]]);
+
 ?>
-<div class="site-about">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        This is the About page. You may modify the following file to customize its content:
-    </p>
+<div class="container text-center my-4">
+    <h2 style="margin-bottom: 80px; font-family: Hey Comic; font-weight: normal; font-style: normal;">Prazer em conhecê-lo!</h2>
+</div>
 
-    <code><?= __FILE__ ?></code>
+<div class="row">
+    <div class="col-sm-7">
+        <h1 style="font-family: Hey Comic; font-weight: normal; font-style: normal;">Davi Silva Eleutério</h1>
+        <p>Técnico em Automação Industrial e estudante dedicado de Engenharia Informática, tem interesse principalmente pela área de Desenvolvimento Web, portanto muito entusiasmado com esse projeto.</p>
+    </div>
+    <div class="col-sm-5" style="display: flex!important; justify-content: flex-end;">
+        <?= Html::img('@web/imagens/davi.jfif', ['class' => 'img-creators', 'alt' => 'Imagem', 'style' => 'margin-bottom: 20px;']) ?>
+    </div>
+</div>
+
+<div class="row" style="margin-top: 40px">
+    <div class="col-sm-5">
+        <?= Html::img('@web/imagens/isabel.jpg', ['class' => 'img-creators', 'alt' => 'Imagem', 'style' => 'margin-bottom: 20px;']) ?>
+    </div>
+    <div class="col-sm-7">
+        <h1 style="font-family: Hey Comic; font-weight: normal; font-style: normal;">Isabel Irigon Salaberry</h1>
+        <p>Estudante de Engenharia Informática, amante de design e disciplinas com potencial criativo. Aspirante a front-end empenhada em fazer o melhor possível no projeto de DW.</p>
+    </div>
+</div>
+
+</div>
+
+<footer style="margin-top: 80px;">
+    <?= Html::img('@web/imagens/bowl-text-logo-transp.png', ['alt' => '...', 'height' => '30']) ?>
+</footer>
+
+</body>
+
 </div>

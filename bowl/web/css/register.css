@@ -1,0 +1,38 @@
+footer {
+    background-color: #9AB21C;
+    min-height: 50px;
+    padding: 10px;
+}
+
+main {
+    background-color: blanchedalmond;
+}
+
+header {
+    background-color: blanchedalmond;
+    min-height: 170px;
+}
+
+.nav-bg-site {
+    border-radius: 10px; 
+    background-color: #9AB21C; 
+    padding: 5px;
+}
+
+.form-control[type=text], .form-control[type=email], .form-control, .form-control:hover, .form-control:focus{
+    background-color: rgb(247, 223, 190);
+    border: 0;
+    box-shadow: none;
+}
+
+.btn-primary{
+    border-color: #E6294F !important;
+    background-color: #E6294F !important;
+    color: blanchedalmond !important;
+}
+
+.btn-primary:hover{
+    border-color: #E6294F !important;
+    background-color: blanchedalmond !important;
+    color: #E6294F !important;
+}
