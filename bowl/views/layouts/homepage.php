@@ -18,6 +18,7 @@ $this->registerMetaTag(['name' => 'viewport', 'content' => 'width=device-width, 
 $this->registerMetaTag(['name' => 'description', 'content' => $this->params['meta_description'] ?? '']);
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
+$this->registerCssFile('/css/homepage.css');
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -30,40 +31,42 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <?php $this->beginBody() ?>
 
 <header id="header">
-    <div class="container mx-auto d-sm-flex d-block flex-sm-nowrap" style="justify-content: center">
-        <?php
-        NavBar::begin([
-            'brandLabel' => '<img src="/imagens/logo-texto-embaixo.png" width="50">',
-            'brandUrl' => Yii::$app->homeUrl,
-            'options' => ['class' => 'navbar navbar-expand-sm navbar-light', 'style' => 'display: flex;']
-        ]);
-        echo Nav::widget([
-            'options' => ['class' => 'navbar-nav', 'style' => 'border-radius: 10px; 
+    <div class="bg-imagem" style="background-image: url('/imagens/bg-banner-homepage.jpg');">
+        <div class="container mx-auto d-sm-flex d-block flex-sm-nowrap" style="justify-content: center">
+            <?php
+            NavBar::begin([
+                'brandLabel' => '<img src="/imagens/logo-texto-embaixo.png" width="50">',
+                'brandUrl' => Yii::$app->homeUrl,
+                'options' => ['class' => 'navbar navbar-expand-sm navbar-light', 'style' => 'display: flex;']
+            ]);
+            echo Nav::widget([
+                'options' => ['class' => 'navbar-nav', 'style' => 'border-radius: 10px; 
     background-color: #9AB21C; 
     padding: 5px;'],
-            'items' => [
-                ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'Sobre Nós', 'url' => ['/site/about']],
-                ['label' => 'Contactos', 'url' => ['/site/contact']],
-                Yii::$app->user->isGuest
-                    ? ['label' => 'Login', 'url' => ['/site/login']]
-                    : '<li class="nav-item">'
-                    . Html::beginForm(['/site/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>',
-                ['label' => 'Refeições', 'url' => ['/refeicao/index']],
-                ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
-                ['label' => 'Categorias', 'url' => ['/categoriaingrediente/index']],
-                ['label' => 'Mensagens', 'url' => ['/mensagem/index']],
-                ['label' => 'Pedidos', 'url' => ['/pedido/index']],
-            ]
-        ]);
-        NavBar::end();
-        ?>
+                'items' => [
+                    ['label' => 'Home', 'url' => ['/site/index']],
+                    ['label' => 'Sobre Nós', 'url' => ['/site/about']],
+                    ['label' => 'Contactos', 'url' => ['/site/contact']],
+                    Yii::$app->user->isGuest
+                        ? ['label' => 'Login', 'url' => ['/site/login']]
+                        : '<li class="nav-item">'
+                        . Html::beginForm(['/site/logout'])
+                        . Html::submitButton(
+                            'Logout (' . Yii::$app->user->identity->username . ')',
+                            ['class' => 'nav-link btn btn-link logout']
+                        )
+                        . Html::endForm()
+                        . '</li>',
+                    ['label' => 'Refeições', 'url' => ['/refeicao/index']],
+                    ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
+                    ['label' => 'Categorias', 'url' => ['/categoriaingrediente/index']],
+                    ['label' => 'Mensagens', 'url' => ['/mensagem/index']],
+                    ['label' => 'Pedidos', 'url' => ['/pedido/index']],
+                ]
+            ]);
+            NavBar::end();
+            ?>
+        </div>
     </div>
 </header>
 
