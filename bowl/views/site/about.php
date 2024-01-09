@@ -12,6 +12,7 @@ $this->registerCssFile(Yii::$app->request->baseUrl . '/css/sobre-nos.css', ['dep
 
 ?>
 
+
 <div class="container text-center my-4">
     <h2 style="margin-bottom: 80px; font-family: Hey Comic; font-weight: normal; font-style: normal;">Prazer em conhecê-lo!</h2>
 </div>
