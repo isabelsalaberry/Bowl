@@ -45,8 +45,8 @@ $this->registerCssFile('/css/homepage.css');
     padding: 5px;'],
                 'items' => [
                     ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'Sobre Nós', 'url' => ['/site/about']],
                     ['label' => 'Ingredientes do Dia', 'url' => ['/site/ingredientes-do-dia']],
+                    ['label' => 'Sobre Nós', 'url' => ['/site/about']],
                     ['label' => 'Contactos', 'url' => ['/site/contact']],
                     ['label' => 'Refeições', 'url' => ['/refeicao/index']],
                     ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
