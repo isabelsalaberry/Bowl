@@ -2,7 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\Bowl;
+use app\models\Carrinho;
+use app\models\Cliente;
+use app\models\IngredienteBowl;
+use app\models\IngredienteRefeicao;
 use app\models\Mensagem;
+use app\models\Refeicao;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -73,7 +79,7 @@ class SiteController extends Controller
      */
     public function actionLogin()
     {
-        if (!Yii::$app->user->isGuest) {
+        /*if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
 
@@ -82,9 +88,8 @@ class SiteController extends Controller
             return $this->goBack();
         }
 
-        $model->password = '';
+        $model->password = '';*/
         return $this->render('login', [
-            'model' => $model,
         ]);
     }
 
@@ -93,12 +98,12 @@ class SiteController extends Controller
      *
      * @return Response
      */
-    public function actionLogout()
+    /*public function actionLogout()
     {
         Yii::$app->user->logout();
 
         return $this->goHome();
-    }
+    }*/
 
     /**
      * Displays contact page.
@@ -131,5 +136,30 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    /**
+     * Displays Ingredientes do Dia page.
+     *
+     * @return string
+     */
+    public function actionIngredientesDoDia()
+    {
+        $cliente_id = 1;
+
+        $refeicao_dia = Refeicao::temRefeicaoHoje();
+        $ingredientes_refeicao = IngredienteRefeicao::find()->where(['refeicao_id' => $refeicao_dia->id]);
+        $carrinho = Carrinho::find()->where(['cliente_id' => $cliente_id])->one();
+
+        //if apertar botão add bowl
+        $bowl = new Bowl();
+
+        //if adicionar ingrediente ao bowl
+        $ingrediente_bowl = new IngredienteBowl();
+        $ingrediente_bowl->bowl_id = $bowl->id;
+
+
+
+        return $this->render('ingredientes-do-dia');
     }
 }

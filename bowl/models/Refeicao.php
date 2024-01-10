@@ -68,4 +68,9 @@ class Refeicao extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Restaurante::class, ['id' => 'restaurante_id']);
     }
+
+    public static function temRefeicaoHoje() {
+        $hoje = new \DateTime(date('Y-m-d'));
+        return Refeicao::find()->where(['data' => $hoje])->one();
+    }
 }

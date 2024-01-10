@@ -17,8 +17,8 @@ class MensagemSearch extends Mensagem
     public function rules()
     {
         return [
-            [['id', 'cliente_id', 'restaurante_id'], 'integer'],
-            [['msg'], 'safe'],
+            [['id', 'restaurante_id'], 'integer'],
+            [['nome_cliente', 'email', 'msg'], 'safe'],
         ];
     }
 
@@ -59,11 +59,12 @@ class MensagemSearch extends Mensagem
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'cliente_id' => $this->cliente_id,
             'restaurante_id' => $this->restaurante_id,
         ]);
 
-        $query->andFilterWhere(['like', 'msg', $this->msg]);
+        $query->andFilterWhere(['like', 'nome_cliente', $this->nome_cliente])
+            ->andFilterWhere(['like', 'email', $this->email])
+            ->andFilterWhere(['like', 'msg', $this->msg]);
 
         return $dataProvider;
     }

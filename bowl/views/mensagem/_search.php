@@ -20,9 +20,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'cliente_id') ?>
-
     <?= $form->field($model, 'restaurante_id') ?>
+
+    <?= $form->field($model, 'nome_cliente') ?>
+
+    <?= $form->field($model, 'email') ?>
 
     <?= $form->field($model, 'msg') ?>
 

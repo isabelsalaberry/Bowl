@@ -12,9 +12,11 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'cliente_id')->textInput() ?>
-
     <?= $form->field($model, 'restaurante_id')->textInput() ?>
+
+    <?= $form->field($model, 'nome_cliente')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'msg')->textarea(['rows' => 6]) ?>
 

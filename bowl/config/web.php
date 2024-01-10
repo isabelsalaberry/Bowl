@@ -53,7 +53,10 @@ $config = [
             'class' => 'amnah\yii2\user\Module',
             // set custom module properties here ...
             'requireEmail' => false,
-            'requireUsername' => true
+            'requireUsername' => true,
+            /*'controllerMap' => [
+                'default' => 'app\controllers\UtilizadorController',
+            ],*/
         ],
     ],
     'params' => $params,

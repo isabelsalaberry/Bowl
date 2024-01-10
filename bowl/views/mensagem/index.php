@@ -31,8 +31,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'cliente_id',
             'restaurante_id',
+            'nome_cliente',
+            'email:email',
             'msg:ntext',
             [
                 'class' => ActionColumn::className(),

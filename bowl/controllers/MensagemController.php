@@ -68,7 +68,6 @@ class MensagemController extends Controller
     public function actionCreate()
     {
         $model = new Mensagem();
-        $model->restaurante_id = 1;
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {

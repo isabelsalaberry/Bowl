@@ -29,7 +29,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 <body class="d-flex flex-column h-100" style="background-color: blanchedalmond">
 <?php $this->beginBody() ?>
 
-<header id="header">
+<header id="header" style="min-height: 85px!important;">
     <div class="container mx-auto d-sm-flex d-block flex-sm-nowrap" style="justify-content: center">
         <?php
         NavBar::begin([
@@ -43,10 +43,17 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     padding: 5px;'],
             'items' => [
                 ['label' => 'Home', 'url' => ['/site/index']],
+                ['label' => 'Ingredientes do Dia', 'url' => ['/site/ingredientes-do-dia']],
                 ['label' => 'Sobre Nós', 'url' => ['/site/about']],
                 ['label' => 'Contactos', 'url' => ['/site/contact']],
+                ['label' => 'Refeições', 'url' => ['/refeicao/index']],
+                ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
+                ['label' => 'Categorias', 'url' => ['/categoria-ingrediente/index']],
+                ['label' => 'Mensagens', 'url' => ['/mensagem/index']],
+                ['label' => 'Pedidos', 'url' => ['/pedido/index']],
+                ['label' => 'Clientes', 'url' => ['/cliente/index']],
                 Yii::$app->user->isGuest
-                    ? ['label' => 'Login', 'url' => ['/site/login']]
+                    ? ['label' => 'Login', 'url' => ['/user/login']]
                     : '<li class="nav-item">'
                     . Html::beginForm(['/site/logout'])
                     . Html::submitButton(
@@ -55,11 +62,6 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                     )
                     . Html::endForm()
                     . '</li>',
-                ['label' => 'Refeições', 'url' => ['/refeicao/index']],
-                ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
-                ['label' => 'Categorias', 'url' => ['/categoriaingrediente/index']],
-                ['label' => 'Mensagens', 'url' => ['/mensagem/index']],
-                ['label' => 'Pedidos', 'url' => ['/pedido/index']],
             ]
         ]);
         NavBar::end();

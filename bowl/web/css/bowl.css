@@ -1,0 +1,36 @@
+footer {
+    background-color: #9AB21C;
+    min-height: 50px;
+    padding: 10px;
+}
+
+main {
+    background-color: blanchedalmond;
+}
+
+header {
+    background-color: blanchedalmond;
+    min-height: 170px;
+}
+
+.nav-bg-site {
+    border-radius: 10px;
+    background-color: #9AB21C;
+    padding: 5px;
+}
+
+.default-bg {
+    background-color: blanchedalmond!important;
+}
+
+@font-face {
+    font-family: 'Hey Comic';
+    src: url('HeyComic.eot');
+    src: url('HeyComic.eot?#iefix') format('embedded-opentype'),
+    url('HeyComic.woff2') format('woff2'),
+    url('HeyComic.woff') format('woff'),
+    url('HeyComic.svg#HeyComic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}

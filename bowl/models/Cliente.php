@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "cliente".
  *
  * @property int $id
+ * @property int $user_id
  * @property string $nome
  * @property string $nif
  * @property string $telemovel
@@ -15,6 +16,7 @@ use Yii;
  * @property string $email
  * @property string $password
  *
+ * @property User $user
  * @property Carrinho[] $carrinhos
  * @property Mensagem[] $mensagems
  * @property Pedido[] $pedidos
@@ -41,6 +43,7 @@ class Cliente extends \yii\db\ActiveRecord
             [['telemovel'], 'string', 'max' => 20],
             [['morada'], 'string', 'max' => 150],
             [['email', 'password'], 'string', 'max' => 45],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \amnah\yii2\user\models\User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
