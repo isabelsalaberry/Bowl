@@ -11,9 +11,21 @@ BootstrapAsset::register($this);
 $this->registerCssFile(Yii::$app->request->baseUrl . '/css/sobre-nos.css', ['depends' => [BootstrapAsset::class]]);
 ?>
 
+<<<<<<< HEAD
 <div class="page-wrapper">
     <div class="container text-center">
         <h2 style="margin-bottom: 80px; font-family: Hey Comic; font-weight: normal; font-style: normal;">Prazer em conhecê-lo!</h2>
+=======
+
+<div class="container text-center my-4">
+    <h2 style="margin-bottom: 80px; font-family: Hey Comic; font-weight: normal; font-style: normal;">Prazer em conhecê-lo!</h2>
+</div>
+
+<div class="row">
+    <div class="col-sm-7">
+        <h1 style="font-family: Hey Comic; font-weight: normal; font-style: normal;">Davi Silva Eleutério</h1>
+        <p>Técnico em Automação Industrial e estudante dedicado de Engenharia Informática, tem interesse principalmente pela área de Desenvolvimento Web, portanto muito entusiasmado com esse projeto.</p>
+>>>>>>> 196c7bd1b0f7fddf27c7e3e96f3d6d0d9e96b80c
     </div>
 
     <div class="row">

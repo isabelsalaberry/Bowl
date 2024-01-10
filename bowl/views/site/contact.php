@@ -13,10 +13,9 @@ $this->registerCssFile(Yii::$app->request->baseUrl . '/css/contactos.css');
 ?>
 
 <div>
-    <h1><?= Html::encode($this->title) ?></h1>
 
     <!-- Container infos de localização -->
-    <div class="container-fluid" style="background-color: #E6294F;">
+    <div class="container-fluid" style="background-color: #E6294F; border-radius: 10px; ">
         <div class="page-wrapper" style="border-style: none;">
             <div class="row p-0" style="background-color: #E6294F;">
 
@@ -62,7 +61,7 @@ $this->registerCssFile(Yii::$app->request->baseUrl . '/css/contactos.css');
         </div>
 
         <div class="form-group">
-            <?= Html::submitButton('Enviar', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Enviar', ['class' => 'btn btn-primary']) ?>
         </div>
 
         <?php ActiveForm::end(); ?>
