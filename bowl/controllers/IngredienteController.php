@@ -7,6 +7,7 @@ use app\models\IngredienteSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\UploadedFile;
 
 /**
  * IngredienteController implements the CRUD actions for Ingrediente model.
@@ -70,7 +71,11 @@ class IngredienteController extends Controller
         $model = new Ingrediente();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            if ($model->load($this->request->post())) {
+                $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+                $model->image_path = '/uploads/ingredientes/' . $model->imageFile->fullPath;
+                if($model->save())
+                    $model->upload();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -93,7 +98,12 @@ class IngredienteController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            $model->imageFile = UploadedFile::getInstance($model, 'imageFile');
+            $model->image_path = '/uploads/ingredientes/' . $model->imageFile->fullPath;
+            if($model->save())
+                $model->upload();
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 

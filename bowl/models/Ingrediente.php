@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\Url;
 
 /**
  * This is the model class for table "ingrediente".
@@ -11,15 +12,16 @@ use Yii;
  * @property int $categoria_id
  * @property string $nome
  * @property string $descricao
- * @property float $preco_g
- * @property float $calorias_g
- * @property float $carboidrato_g
- * @property float $acucar_g
- * @property float $proteina_g
- * @property float $sodio_g
- * @property float $gordura_g
- * @property float $gordura_saturada_g
- * @property float $fibras_g
+ * @property string $image_path
+ * @property double $preco_g
+ * @property double $calorias_g
+ * @property double $carboidrato_g
+ * @property double $acucar_g
+ * @property double $proteina_g
+ * @property double $sodio_g
+ * @property double $gordura_g
+ * @property double $gordura_saturada_g
+ * @property double $fibras_g
  * @property int $gluten
  * @property int $lactose
  * @property int $vegan
@@ -29,6 +31,8 @@ use Yii;
  */
 class Ingrediente extends \yii\db\ActiveRecord
 {
+    public $imageFile;
+
     /**
      * {@inheritdoc}
      */
@@ -47,8 +51,10 @@ class Ingrediente extends \yii\db\ActiveRecord
             [['categoria_id', 'gluten', 'lactose', 'vegan'], 'integer'],
             [['preco_g', 'calorias_g', 'carboidrato_g', 'acucar_g', 'proteina_g', 'sodio_g', 'gordura_g', 'gordura_saturada_g', 'fibras_g'], 'number'],
             [['nome'], 'string', 'max' => 45],
+            [['image_path'], 'string'],
             [['descricao'], 'string', 'max' => 200],
             [['categoria_id'], 'exist', 'skipOnError' => true, 'targetClass' => Categoriaingrediente::class, 'targetAttribute' => ['categoria_id' => 'id']],
+            [['imageFile'], 'file', 'skipOnEmpty' => true, 'extensions' => 'png, jpg',  'maxSize' => 1024 * 1024 * 2],
         ];
     }
 
@@ -95,5 +101,19 @@ class Ingrediente extends \yii\db\ActiveRecord
     public function getIngredienteRefeicaos()
     {
         return $this->hasMany(IngredienteRefeicao::class, ['ingrediente_id' => 'id']);
+    }
+
+    public function uploadPath()
+    {
+        return Yii::getAlias('@webroot') . '/uploads/ingredientes/';
+    }
+
+    public function upload()
+    {
+        if ($this->validate()) {
+            $path = $this->uploadPath() . $this->imageFile->fullPath;
+            $this->imageFile->saveAs($path);
+            return true;
+        } else return false;
     }
 }
