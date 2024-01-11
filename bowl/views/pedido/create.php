@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 /** @var yii\web\View $this */
 /** @var app\models\Pedido $model */
-
+$this->registerCssFile('@web/css/tables.css');
 $this->title = 'Create Pedido';
 $this->params['breadcrumbs'][] = ['label' => 'Pedidos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

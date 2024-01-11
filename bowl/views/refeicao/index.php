@@ -10,7 +10,8 @@ use yii\widgets\Pjax;
 /** @var app\models\RefeicaoSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Refeicaos';
+$this->registerCssFile('@web/css/tables.css');
+$this->title = 'Refeições';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="refeicao-index">
@@ -18,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Refeicao', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Refeições', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -27,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'tableOptions' => ['class' => 'estilo-tabelas'],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

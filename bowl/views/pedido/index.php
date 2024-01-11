@@ -9,7 +9,7 @@ use yii\widgets\Pjax;
 /** @var yii\web\View $this */
 /** @var app\models\PedidoSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
-
+$this->registerCssFile('@web/css/tables.css');
 $this->title = 'Pedidos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -27,6 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'tableOptions' => ['class' => 'estilo-tabelas'],
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

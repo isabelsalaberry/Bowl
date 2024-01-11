@@ -5,6 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Ingrediente $model */
 
+$this->registerCssFile('@web/css/tables.css');
 $this->title = 'Create Ingrediente';
 $this->params['breadcrumbs'][] = ['label' => 'Ingredientes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;

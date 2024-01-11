@@ -13,6 +13,7 @@ $this->registerCssFile(Yii::$app->request->baseUrl . '/css/contactos.css');
 ?>
 
 <div>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <!-- Container infos de localização -->
     <div class="container-fluid" style="background-color: #E6294F; border-radius: 10px; ">
