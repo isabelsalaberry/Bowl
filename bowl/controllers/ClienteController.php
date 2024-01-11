@@ -68,6 +68,7 @@ class ClienteController extends Controller
     public function actionCreate()
     {
         $model = new Cliente();
+        $model->user_id = 1;
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {

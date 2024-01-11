@@ -13,8 +13,6 @@ use Yii;
  * @property string $nif
  * @property string $telemovel
  * @property string $morada
- * @property string $email
- * @property string $password
  *
  * @property User $user
  * @property Carrinho[] $carrinhos
@@ -37,12 +35,11 @@ class Cliente extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['nome', 'nif', 'telemovel', 'morada', 'email', 'password'], 'required'],
+            [['nome', 'nif', 'telemovel', 'morada'], 'required'],
             [['nome'], 'string', 'max' => 100],
             [['nif'], 'string', 'max' => 10],
             [['telemovel'], 'string', 'max' => 20],
             [['morada'], 'string', 'max' => 150],
-            [['email', 'password'], 'string', 'max' => 45],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => \amnah\yii2\user\models\User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
     }

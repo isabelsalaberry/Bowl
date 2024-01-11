@@ -57,7 +57,7 @@ $this->registerCssFile('/css/homepage.css');
                     Yii::$app->user->isGuest
                         ? ['label' => 'Login', 'url' => ['/user/login']]
                         : '<li class="nav-item">'
-                        . Html::beginForm(['/site/logout'])
+                        . Html::beginForm(['/user/logout'])
                         . Html::submitButton(
                             'Logout (' . Yii::$app->user->identity->username . ')',
                             ['class' => 'nav-link btn btn-link logout']

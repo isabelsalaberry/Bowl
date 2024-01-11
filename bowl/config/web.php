@@ -22,14 +22,23 @@ $config = [
         'user' => [
             'class' => 'amnah\yii2\user\components\User',
         ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'useFileTransport' => true,
+            'messageConfig' => [
+                'from' => ['admin@website.com' => 'Admin'], // this is needed for sending emails
+                'charset' => 'UTF-8',
+            ]
+        ],
+        'view' => [
+            'theme' => [
+                'pathMap' => [
+                    '@vendor/amnah/yii2-user/views' => '@app/views', // example: @app/views/user/default/login.php
+                ],
+            ],
+        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
-        ],
-        'mailer' => [
-            'class' => \yii\symfonymailer\Mailer::class,
-            'viewPath' => '@app/mail',
-            // send all mails to a file by default.
-            'useFileTransport' => true,
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -53,10 +62,14 @@ $config = [
             'class' => 'amnah\yii2\user\Module',
             // set custom module properties here ...
             'requireEmail' => false,
+            'emailConfirmation' => false,
+            'emailChangeConfirmation' => false,
+            'useEmail' => false,
+            'loginEmail' => false,
             'requireUsername' => true,
-            /*'controllerMap' => [
+            'controllerMap' => [
                 'default' => 'app\controllers\UtilizadorController',
-            ],*/
+            ],
         ],
     ],
     'params' => $params,
