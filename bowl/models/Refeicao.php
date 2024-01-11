@@ -32,6 +32,7 @@ class Refeicao extends \yii\db\ActiveRecord
         return [
             [['data', 'restaurante_id'], 'required'],
             [['data'], 'safe'],
+            [['image_path'], 'string'],
             [['restaurante_id'], 'integer'],
             [['restaurante_id'], 'exist', 'skipOnError' => true, 'targetClass' => Restaurante::class, 'targetAttribute' => ['restaurante_id' => 'id']],
         ];
@@ -70,7 +71,10 @@ class Refeicao extends \yii\db\ActiveRecord
     }
 
     public static function temRefeicaoHoje() {
-        $hoje = new \DateTime(date('Y-m-d'));
+        //$hoje = date('Y-m-d');
+        $hoje = "2024-01-09";
         return Refeicao::find()->where(['data' => $hoje])->one();
     }
+
+
 }
