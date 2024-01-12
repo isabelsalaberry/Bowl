@@ -3,8 +3,11 @@
 namespace app\controllers;
 
 use app\models\Ingrediente;
+use app\models\IngredienteRefeicao;
+use app\models\IngredienteSearch;
 use app\models\Refeicao;
 use app\models\RefeicaoSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -69,10 +72,23 @@ class RefeicaoController extends Controller
     public function actionCreate()
     {
         $model = new Refeicao();
-        $dataProviderIngredientes = Ingrediente::find()->all();
+        $model->restaurante_id = 1;
+        $searchModelIngredientes = new IngredienteSearch();
+        $dataProviderIngredientes = $searchModelIngredientes->search($this->request->queryParams);
+
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
+            $selection = (array)Yii::$app->request->post('selection');
+
+            if ($model->load($this->request->post())) {
+                if($model->save('true', ['data', 'restaurante_id', 'id'])) {
+                    foreach($selection as $ingrediente_id) {
+                        $modelIngRef = new IngredienteRefeicao();
+                        $modelIngRef->ingrediente_id = $ingrediente_id;
+                        $modelIngRef->refeicao_id = $model->id;
+                        $modelIngRef->save();
+                    }
+                }
                 return $this->redirect(['index']);
             }
         } else {
@@ -81,7 +97,8 @@ class RefeicaoController extends Controller
 
         return $this->render('create', [
             'model' => $model,
-            'dataProviderIngredientes' => $dataProviderIngredientes
+            'dataProviderIngredientes' => $dataProviderIngredientes,
+            'searchModelIngredientes' => $searchModelIngredientes
         ]);
     }
 

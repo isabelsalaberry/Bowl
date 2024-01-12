@@ -42,12 +42,15 @@ $this->params['breadcrumbs'][] = $this->title;
 
                     return Html::img($data['image_path'],
 
-                        ['width' => '100px']);
+                        ['width' => '80px']);
 
                 },
 
             ],
-            'categoria_id',
+            ['label'=>'Categoria',
+                'value' => function ($data) {
+                    return \app\models\CategoriaIngrediente::findOne(['id'=>$data->categoria_id])->nome;
+                }],
             'nome',
             'descricao',
             'preco_g',

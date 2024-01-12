@@ -71,8 +71,7 @@ class Refeicao extends \yii\db\ActiveRecord
     }
 
     public static function temRefeicaoHoje() {
-        //$hoje = date('Y-m-d');
-        $hoje = "2024-01-09";
+        $hoje = date('Y-m-d');
         return Refeicao::find()->where(['data' => $hoje])->one();
     }
 

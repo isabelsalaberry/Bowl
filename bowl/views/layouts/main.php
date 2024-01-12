@@ -43,7 +43,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     padding: 5px;'],
             'items' => [
                 ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'Ingredientes do Dia', 'url' => ['/site/ingredientes-do-dia']],
+                ['label' => 'Fazer Pedido', 'url' => ['/site/fazer-pedido']],
                 ['label' => 'Sobre Nós', 'url' => ['/site/about']],
                 ['label' => 'Contactos', 'url' => ['/site/contact']],
                 ['label' => 'Refeições', 'url' => ['/refeicao/index']],

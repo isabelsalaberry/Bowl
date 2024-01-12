@@ -1,5 +1,7 @@
 <?php
 
+use kartik\datetime\DateTimePicker;
+use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -12,9 +14,53 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'data')->textInput() ?>
+    <?php echo $form->field($model, 'data')->widget(DateTimePicker::classname(), [
+        'language' => 'pt',
+        'layout' => '{picker}{input}{remove}',
+        'options' => ['placeholder' => Yii::t('app','Escolha a data...')],
+        'pluginOptions' => [
+            'minView' => 2, // Não mostra seletor de hora
+            'format' => 'yyyy-mm-dd',
+            'autoclose' => true
+        ]
+    ])->label(Yii::t('app',"Data da Refeição"))
+    ?>
 
-    <?= $form->field($model, 'restaurante_id')->textInput() ?>
+    <?= GridView::widget([
+        'dataProvider' => $dataProviderIngredientes,
+        'filterModel' => $searchModelIngredientes,
+        'tableOptions' => ['class' => 'table table-striped'],
+        'columns' => [
+            [
+
+                'attribute' => 'image_path',
+
+                'format' => 'html',
+
+                'label' => 'Imagem',
+
+                'value' => function ($data) {
+
+                    return Html::img($data->image_path,
+
+                        ['width' => '80px']);
+
+                },
+
+            ],
+            ['label'=>'Categoria',
+            'value' => function ($data) {
+                 return \app\models\CategoriaIngrediente::findOne(['id'=>$data->categoria_id])->nome;
+            }],
+            'nome',
+            'preco_g',
+
+            [
+                'class' => 'yii\grid\CheckboxColumn',
+                // you may configure additional properties here
+            ],
+        ],
+    ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
@@ -23,3 +69,7 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+
+<script>
+    var keys = $('#grid').yiiGridView('getSelectedRows');
+</script>

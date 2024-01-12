@@ -143,25 +143,16 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionIngredientesDoDia()
+    public function actionFazerPedido()
     {
         $cliente_id = 1;
 
         $refeicao_dia = Refeicao::temRefeicaoHoje();
-        $ingredientes_refeicao = IngredienteRefeicao::find()->where(['refeicao_id' => $refeicao_dia->id]);
+        $ingredientes_refeicao = IngredienteRefeicao::find()->where(['refeicao_id' => $refeicao_dia->id])->all();
         $carrinho = Carrinho::find()->where(['cliente_id' => $cliente_id])->one();
 
-        //if apertar botão add bowl
-        $bowl = new Bowl();
-
-        //if adicionar ingrediente ao bowl
-        $ingrediente_bowl = new IngredienteBowl();
-        $ingrediente_bowl->bowl_id = $bowl->id;
-
-
-
-        return $this->render('ingredientes-do-dia', [
-            'dataProvider' => $ingredientes_refeicao
+        return $this->render('fazer-pedido', [
+            'ingredientes_refeicao' => $ingredientes_refeicao
         ]);
     }
 }
