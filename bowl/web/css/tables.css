@@ -1,57 +1,40 @@
-.estilo-tabelas {
+.table-striped>tbody>tr:nth-child(even)>td, .table-striped>tbody>tr:nth-child(even)>th {
+    background-color: #7B8E16;
+    border-style: none;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, .table-striped>tbody>tr:nth-child(odd)>th {
+    background-color: #96ab1a;
+    border-style: none;
+}
+
+.table-striped>thead>tr:nth-child(even)>th, .table-striped>thead>tr:nth-child(even)>th {
+    background-color: #7B8E16;
+    border-style: none;
+}
+
+.table-striped>thead>tr:nth-child(odd)>th, .table-striped>thead>tr:nth-child(odd)>th {
+    background-color: #96ab1a;
+    border-style: none;
+}
+
+.table-striped>thead>tr:nth-child(odd)>th>a {
+    color:black;
+    text-decoration: none;
+}
+
+.table-striped>thead>tr:nth-child(odd)>th>a:hover {
+    color:white;
+    text-decoration: none;
+}
+
+.table-striped > thead {
+    background-color: #7B8E16;
+}
+
+.table-striped>thead>tr>td {
     background-color: #96ab1a;
 }
-
-.view-style tbody tr:nth-child(odd) {
-    background-color: #96ab1a;
-}
-
-.view-style tbody tr:nth-child(even) {
-    background-color: #7B8E16; 
-}
-
-.form-control[type=text], .form-control[type=email], .form-control, .form-control:hover, .form-control:focus{
-    background-color: rgba(239, 220, 194, 0.605);
-    border-radius: 10px; 
-    border: 0;
-    box-shadow: none;
-}
-
-
-footer {
-    background-color: #9AB21C;
-    min-height: 50px;
-    padding: 10px;
-}
-
-main {
-    background-color: blanchedalmond;
-}
-
-header {
-    background-color: blanchedalmond;
-    min-height: 170px;
-}
-
-.nav-bg-site {
-    border-radius: 10px; 
-    background-color: #9AB21C; 
-    padding: 5px;
-}
-
-
-.page-wrapper {
-    background-color: blanchedalmond;
-    margin: 0 auto;
-    max-width: 55%;
-    overflow: hidden;
-    border-left: 1px solid blanchedalmond;
-    border-right: 1px solid blanchedalmond;
-    padding: 0; 
-}      
-
-
-
 
 @font-face {
     font-family: "HeyComic";

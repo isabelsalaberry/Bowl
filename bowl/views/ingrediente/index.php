@@ -28,11 +28,25 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
-        'tableOptions' => ['class' => 'estilo-tabelas'],
+        'tableOptions' => ['class' => 'table table-striped'],
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+            [
 
-            'id',
+                'attribute' => 'image_path',
+
+                'format' => 'html',
+
+                'label' => 'Imagem',
+
+                'value' => function ($data) {
+
+                    return Html::img($data['image_path'],
+
+                        ['width' => '100px']);
+
+                },
+
+            ],
             'categoria_id',
             'nome',
             'descricao',

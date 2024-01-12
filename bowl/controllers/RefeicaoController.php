@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Ingrediente;
 use app\models\Refeicao;
 use app\models\RefeicaoSearch;
 use yii\web\Controller;
@@ -68,6 +69,7 @@ class RefeicaoController extends Controller
     public function actionCreate()
     {
         $model = new Refeicao();
+        $dataProviderIngredientes = Ingrediente::find()->all();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -79,6 +81,7 @@ class RefeicaoController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'dataProviderIngredientes' => $dataProviderIngredientes
         ]);
     }
 

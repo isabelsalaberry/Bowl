@@ -160,6 +160,8 @@ class SiteController extends Controller
 
 
 
-        return $this->render('ingredientes-do-dia');
+        return $this->render('ingredientes-do-dia', [
+            'dataProvider' => $ingredientes_refeicao
+        ]);
     }
 }
