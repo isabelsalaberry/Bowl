@@ -10,6 +10,7 @@ use Yii;
  * @property int $id
  * @property int $ing_ref_id
  * @property int $bowl_id
+ * @property double $quantidade
  *
  * @property Bowl $bowl
  * @property IngredienteRefeicao $ingRef
@@ -30,8 +31,9 @@ class IngredienteBowl extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['ing_ref_id', 'bowl_id'], 'required'],
+            [['ing_ref_id', 'bowl_id', 'quantidade'], 'required'],
             [['ing_ref_id', 'bowl_id'], 'integer'],
+            [['quantidade'], 'number'],
             [['bowl_id'], 'exist', 'skipOnError' => true, 'targetClass' => Bowl::class, 'targetAttribute' => ['bowl_id' => 'id']],
             [['ing_ref_id'], 'exist', 'skipOnError' => true, 'targetClass' => IngredienteRefeicao::class, 'targetAttribute' => ['ing_ref_id' => 'id']],
         ];

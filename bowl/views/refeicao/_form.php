@@ -8,6 +8,8 @@ use yii\widgets\ActiveForm;
 /** @var yii\web\View $this */
 /** @var app\models\Refeicao $model */
 /** @var yii\widgets\ActiveForm $form */
+
+$this->registerCssFile('@web/css/tables.css');
 ?>
 
 <div class="refeicao-form">

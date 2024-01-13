@@ -148,11 +148,15 @@ class SiteController extends Controller
         $cliente_id = 1;
 
         $refeicao_dia = Refeicao::temRefeicaoHoje();
-        $ingredientes_refeicao = IngredienteRefeicao::find()->where(['refeicao_id' => $refeicao_dia->id])->all();
+        $ingredientes_refeicao = null;
+        if($refeicao_dia!=null) {
+            $ingredientes_refeicao = IngredienteRefeicao::find()->where(['refeicao_id' => $refeicao_dia->id])->all();
+        }
         $carrinho = Carrinho::find()->where(['cliente_id' => $cliente_id])->one();
 
         return $this->render('fazer-pedido', [
-            'ingredientes_refeicao' => $ingredientes_refeicao
+            'ingredientes_refeicao' => $ingredientes_refeicao,
+            'refeicao_dia' => $refeicao_dia
         ]);
     }
 }
