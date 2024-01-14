@@ -101,4 +101,20 @@ class Carrinho extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Pedido::class, ['carrinho_id' => 'id']);
     }
+
+    public function limparCarrinho($cliente_id) {
+        $this->cliente_id = $cliente_id;
+        $this->preco = 0;
+        $this->calorias = 0;
+        $this->carboidratos = 0;
+        $this->acucares = 0;
+        $this->proteinas = 0;
+        $this->sodios = 0;
+        $this->gorduras = 0;
+        $this->gorduras_saturadas = 0;
+        $this->fibras = 0;
+        $this->gluten = 0;
+        $this->lactose = 0;
+        $this->vegan = 0;
+    }
 }

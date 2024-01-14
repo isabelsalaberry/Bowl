@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Bowl;
 use app\models\BowlSearch;
 use app\models\Carrinho;
+use app\models\Cliente;
 use app\models\Ingrediente;
 use app\models\IngredienteBowl;
 use app\models\IngredienteRefeicao;
@@ -75,7 +76,8 @@ class BowlController extends Controller
      */
     public function actionCreate()
     {
-        $cliente_id = 1;
+        $cliente = Cliente::getClienteUser();
+        $cliente_id = $cliente->id;
         $carrinho = Carrinho::find()->where(['cliente_id' => $cliente_id])->one();
 
         $modelBowl = new Bowl();

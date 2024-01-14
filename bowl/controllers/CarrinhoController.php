@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Bowl;
 use app\models\Carrinho;
 use app\models\CarrinhoSearch;
+use app\models\Cliente;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -38,12 +40,14 @@ class CarrinhoController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new CarrinhoSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $cliente = Cliente::getClienteUser();
+        $carrinho = Carrinho::find()->where(['cliente_id' => $cliente->id])->one();
+
+        $bowls_carrinho = Bowl::find()->where(['carrinho_id' => $carrinho->id])->all();
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'bowls_carrinho' => $bowls_carrinho,
+            'carrinho' => $carrinho,
         ]);
     }
 
