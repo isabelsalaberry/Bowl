@@ -65,7 +65,7 @@ $this->registerCssFile('@web/css/tables.css');
     ]); ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-primary']) ?>
+        <?= Html::submitButton('Salvar', ['class' => 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

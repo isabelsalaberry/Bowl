@@ -6,6 +6,7 @@ use yii\grid\ActionColumn;
 use yii\grid\GridView;
 
 $this->registerCssFile('@web/css/site.css');
+$this->registerCssFile('@web/css/tables.css');
 
 /** @var yii\web\View $this */
 /** @var app\models\ClienteSearch $searchModel */
@@ -15,13 +16,9 @@ $this->title = 'Fazer Pedido';
 ?>
 
 <div class="fazer-pedido">
-    <div class="row">
-        Inserir tutorial aqui, com a fonte do site e etc :)
-    </div>
-
     <?php if($ingredientes_refeicao != null) { ?>
 
-    <h2>Ingredientes de hoje!</h2>
+    <h2 class="p-3 text-center" style="font-family: Hey Comic; font-weight: normal; font-style: normal;">Ingredientes de hoje!</h2>
 
     <div class="row">
         <?php
@@ -38,14 +35,14 @@ $this->title = 'Fazer Pedido';
     </div>
 
     <p>
-        <?= Html::a('Criar Bowl.', ['/bowl/create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Criar Bowl.', ['/bowl/create'], ['class' => 'btn btn-primary']) ?>
     </p>
 
 
     <?php }
     else { ?>
         <div class="row">
-            <h2>
+            <h2 class="p-3" style="font-family: Hey Comic; font-weight: normal; font-style: normal;">
                 Não há refeição disponível para o dia de hoje!
             </h2>
         </div>

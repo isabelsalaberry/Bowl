@@ -51,17 +51,12 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
                 ['label' => 'Categorias', 'url' => ['/categoria-ingrediente/index']],
                 ['label' => 'Mensagens', 'url' => ['/mensagem/index']],
                 ['label' => 'Pedidos', 'url' => ['/pedido/index']],
-                ['label' => 'Clientes', 'url' => ['/cliente/index']],
-                Yii::$app->user->isGuest
-                    ? ['label' => 'Login', 'url' => ['/user/login']]
-                    : '<li class="nav-item">'
-                    . Html::beginForm(['/user/logout'])
-                    . Html::submitButton(
-                        'Logout (' . Yii::$app->user->identity->username . ')',
-                        ['class' => 'nav-link btn btn-link logout']
-                    )
-                    . Html::endForm()
-                    . '</li>',
+                ['label' => 'Carrinho', 'url' => ['/carrinho/index']],
+                Yii::$app->user->isGuest ?
+                    ['label' => 'Login', 'url' => ['/user/login']] : // or ['/user/login-email']
+                    ['label' => 'Logout (' . Yii::$app->user->displayName . ')',
+                        'url' => ['/user/logout'],
+                        'linkOptions' => ['data-method' => 'post']],
             ]
         ]);
         NavBar::end();

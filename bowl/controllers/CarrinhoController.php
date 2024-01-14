@@ -6,6 +6,7 @@ use app\models\Bowl;
 use app\models\Carrinho;
 use app\models\CarrinhoSearch;
 use app\models\Cliente;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -20,17 +21,18 @@ class CarrinhoController extends Controller
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['admin', 'cliente'],
                     ],
                 ],
-            ]
-        );
+            ],
+        ];
     }
 
     /**
@@ -42,6 +44,13 @@ class CarrinhoController extends Controller
     {
         $cliente = Cliente::getClienteUser();
         $carrinho = Carrinho::find()->where(['cliente_id' => $cliente->id])->one();
+        if($carrinho === null) {
+            $carrinho = new Carrinho();
+            $carrinho->limparCarrinho($cliente->id);
+            if($carrinho->validate()) {
+                $carrinho->save();
+            }
+        }
 
         $bowls_carrinho = Bowl::find()->where(['carrinho_id' => $carrinho->id])->all();
 

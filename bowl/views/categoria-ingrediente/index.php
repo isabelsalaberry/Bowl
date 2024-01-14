@@ -11,7 +11,7 @@ use yii\widgets\Pjax;
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->registerCssFile('@web/css/tables.css');
-$this->title = 'Categoria Ingredientes';
+$this->title = 'Categorias de Ingredientes';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="categoria-ingrediente-index">
@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Categoria Ingrediente', ['create'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Criar Categoria', ['create'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?php Pjax::begin(); ?>

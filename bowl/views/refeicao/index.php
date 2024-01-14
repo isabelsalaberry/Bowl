@@ -19,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Refeições', ['create'], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Criar Refeições', ['create'], ['class' => 'btn btn-primary']) ?>
     </p>
 
     <?php Pjax::begin(); ?>

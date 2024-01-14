@@ -22,7 +22,7 @@ $this->title = 'Carrinho';
     <?php Pjax::begin(); ?>
 
     <div class="row">
-        <div class="col-sm-7">
+        <div class="col-sm-7 text-center">
             <?php
             foreach($bowls_carrinho as $bowl) {
                 $bowlIng = \app\models\IngredienteBowl::find()->where(['bowl_id' => $bowl->id])->all(); ?>
@@ -38,25 +38,31 @@ $this->title = 'Carrinho';
                         [
                             'attribute' => 'image_path',
                             'format' => 'html',
-                            'label' => false,
+                            'label' => 'Imagem',
                             'value' => function ($data) {
                                 return Html::img($data->ingRef->ingrediente['image_path'],
                                     ['width' => '80px']);
                             },
                         ],
-                        ['label'=> false,
+                        ['label'=> 'Categoria',
                             'value' => function ($data) {
                                 return \app\models\CategoriaIngrediente::findOne(['id'=>$data->ingRef->ingrediente->categoria_id])->nome;
                             }],
-                        ['label' => false,
+                        ['label' => 'Nome',
                             'value' => function ($data) {
                                 return $data->ingRef->ingrediente->nome;
+                            }],
+                        ['label' => 'Quantidade',
+                            'value' => function ($data) {
+                                return $data->quantidade;
                             }],
                     ],
                 ]); ?>
                 <br>
             <?php } ?>
-
+            <p>
+                <?= Html::a('Adicionar Outro Bowl.', ['/bowl/create'], ['class' => 'btn btn-primary']) ?>
+            </p>
         </div>
 
         <div class="col-sm-5" style="background-color: #9AB21C">
@@ -130,7 +136,7 @@ $this->title = 'Carrinho';
                     <h5><?php echo $carrinho->preco ?> €</h5>
                 </div>
                 <div class="col-lg">
-                    <?= Html::a('<i class="bi bi-arrow-right"></i>', ['/pedido/create'], ['class' => 'btn-finish float-end', 'style' => 'display: flex; justify-content: center']) ?>
+                    <?= Html::a('<i class="bi bi-arrow-right"></i>', ['pedido/create', 'carrinho_id' => $carrinho->id], ['class' => 'btn-finish float-end', 'style' => 'display: flex; justify-content: center']) ?>
                 </div>
             </div>
         </div>

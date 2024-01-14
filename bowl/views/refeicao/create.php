@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Refeicao $model */
 $this->registerCssFile('@web/css/tables.css');
-$this->title = 'Create Refeicao';
+$this->title = 'Criar Refeicao';
 $this->params['breadcrumbs'][] = ['label' => 'Refeições', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

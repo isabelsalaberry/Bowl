@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Ingrediente;
 use app\models\IngredienteSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -19,17 +20,18 @@ class IngredienteController extends Controller
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['admin'],
                     ],
                 ],
-            ]
-        );
+            ],
+        ];
     }
 
     /**
@@ -76,7 +78,7 @@ class IngredienteController extends Controller
                 $model->image_path = '/uploads/ingredientes/' . $model->imageFile->fullPath;
                 if($model->save())
                     $model->upload();
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();
@@ -104,7 +106,7 @@ class IngredienteController extends Controller
             if($model->save())
                 $model->upload();
 
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['index']);
         }
 
         return $this->render('update', [

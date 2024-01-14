@@ -9,6 +9,7 @@ use app\models\IngredienteBowl;
 use app\models\IngredienteRefeicao;
 use app\models\Mensagem;
 use app\models\Refeicao;
+use app\models\Restaurante;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -69,6 +70,14 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->layout = 'homepage';
+
+        if(Restaurante::findOne(1) === null) {
+            $rest = new Restaurante();
+            $rest->nome = "Bowl.";
+            $rest->save();
+        }
+
+
         return $this->render('index');
     }
 

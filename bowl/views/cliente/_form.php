@@ -14,7 +14,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nome')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'nif')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($enquete, 'resposta')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'telemovel')->textInput(['maxlength' => true]) ?>
 

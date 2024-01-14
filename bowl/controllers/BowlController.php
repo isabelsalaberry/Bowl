@@ -13,6 +13,7 @@ use app\models\IngredienteSearch;
 use app\models\Refeicao;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -27,17 +28,18 @@ class BowlController extends Controller
      */
     public function behaviors()
     {
-        return array_merge(
-            parent::behaviors(),
-            [
-                'verbs' => [
-                    'class' => VerbFilter::className(),
-                    'actions' => [
-                        'delete' => ['POST'],
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['admin', 'cliente'],
                     ],
                 ],
-            ]
-        );
+            ],
+        ];
     }
 
     /**
@@ -166,7 +168,7 @@ class BowlController extends Controller
                 Yii::$app->session->setFlash('error', 'Erro ao adicionar ao carrinho.');
             }
 
-            return $this->redirect(['/carrinho/view', 'id' => $carrinho->id]);
+            return $this->redirect(['/carrinho/index']);
         } else {
             foreach($ingredientes_bowl as $ing) {
                 $ing->loadDefaultValues();

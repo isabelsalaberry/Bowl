@@ -10,16 +10,13 @@ use yii\widgets\Pjax;
 /** @var app\models\MensagemSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 $this->registerCssFile('@web/css/tables.css');
-$this->title = 'Mensagems';
+$this->title = 'Mensagens Recebidas';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="mensagem-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Mensagem', ['create'], ['class' => 'btn btn-primary']) ?>
-    </p>
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>

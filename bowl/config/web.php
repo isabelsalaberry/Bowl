@@ -30,13 +30,6 @@ $config = [
                 'charset' => 'UTF-8',
             ]
         ],
-        'view' => [
-            'theme' => [
-                'pathMap' => [
-                    '@vendor/amnah/yii2-user/views' => '@app/views', // example: @app/views/user/default/login.php
-                ],
-            ],
-        ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
@@ -67,9 +60,6 @@ $config = [
             'useEmail' => false,
             'loginEmail' => false,
             'requireUsername' => true,
-            'controllerMap' => [
-                'default' => 'app\controllers\UtilizadorController',
-            ],
         ],
     ],
     'params' => $params,

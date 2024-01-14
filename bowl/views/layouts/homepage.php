@@ -19,6 +19,50 @@ $this->registerMetaTag(['name' => 'description', 'content' => $this->params['met
 $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_keywords'] ?? '']);
 $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii::getAlias('@web/favicon.ico')]);
 $this->registerCssFile('/css/homepage.css');
+
+$menuItems = [];
+
+if(Yii::$app->user->can("admin")) {
+    $menuItems = [['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Fazer Pedido', 'url' => ['/site/fazer-pedido']],
+        ['label' => 'Sobre Nós', 'url' => ['/site/about']],
+        ['label' => 'Contactos', 'url' => ['/site/contact']],
+        ['label' => 'Refeições', 'url' => ['/refeicao/index']],
+        ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
+        ['label' => 'Categorias', 'url' => ['/categoria-ingrediente/index']],
+        ['label' => 'Mensagens', 'url' => ['/mensagem/index']],
+        ['label' => 'Pedidos', 'url' => ['/pedido/index']],
+        ['label' => 'Carrinho', 'url' => ['/carrinho/index']],
+        Yii::$app->user->isGuest ?
+            ['label' => 'Login', 'url' => ['/user/login']] : // or ['/user/login-email']
+            ['label' => 'Logout (' . Yii::$app->user->displayName . ')',
+                'url' => ['/user/logout'],
+                'linkOptions' => ['data-method' => 'post']]];
+}
+else if(Yii::$app->user->can("cliente")) {
+    $menuItems = [['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Fazer Pedido', 'url' => ['/site/fazer-pedido']],
+        ['label' => 'Sobre Nós', 'url' => ['/site/about']],
+        ['label' => 'Contactos', 'url' => ['/site/contact']],
+        ['label' => 'Pedidos', 'url' => ['/pedido/index-clientes']],
+        ['label' => 'Carrinho', 'url' => ['/carrinho/index']],
+        Yii::$app->user->isGuest ?
+            ['label' => 'Login', 'url' => ['/user/login']] : // or ['/user/login-email']
+            ['label' => 'Logout (' . Yii::$app->user->displayName . ')',
+                'url' => ['/user/logout'],
+                'linkOptions' => ['data-method' => 'post']]];
+}
+else if(Yii::$app->user->isGuest) {
+    $menuItems = [['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Sobre Nós', 'url' => ['/site/about']],
+        ['label' => 'Contactos', 'url' => ['/site/contact']],
+        Yii::$app->user->isGuest ?
+            ['label' => 'Login', 'url' => ['/user/login']] : // or ['/user/login-email']
+            ['label' => 'Logout (' . Yii::$app->user->displayName . ')',
+                'url' => ['/user/logout'],
+                'linkOptions' => ['data-method' => 'post']]];
+}
+
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -43,28 +87,7 @@ $this->registerCssFile('/css/homepage.css');
                 'options' => ['class' => 'navbar-nav', 'style' => 'border-radius: 10px; 
     background-color: #9AB21C; 
     padding: 5px;'],
-                'items' => [
-                    ['label' => 'Home', 'url' => ['/site/index']],
-                    ['label' => 'Fazer Pedido', 'url' => ['/site/fazer-pedido']],
-                    ['label' => 'Sobre Nós', 'url' => ['/site/about']],
-                    ['label' => 'Contactos', 'url' => ['/site/contact']],
-                    ['label' => 'Refeições', 'url' => ['/refeicao/index']],
-                    ['label' => 'Ingredientes', 'url' => ['/ingrediente/index']],
-                    ['label' => 'Categorias', 'url' => ['/categoria-ingrediente/index']],
-                    ['label' => 'Mensagens', 'url' => ['/mensagem/index']],
-                    ['label' => 'Pedidos', 'url' => ['/pedido/index']],
-                    ['label' => 'Clientes', 'url' => ['/cliente/index']],
-                    Yii::$app->user->isGuest
-                        ? ['label' => 'Login', 'url' => ['/user/login']]
-                        : '<li class="nav-item">'
-                        . Html::beginForm(['/user/logout'])
-                        . Html::submitButton(
-                            'Logout (' . Yii::$app->user->identity->username . ')',
-                            ['class' => 'nav-link btn btn-link logout']
-                        )
-                        . Html::endForm()
-                        . '</li>',
-                ]
+                'items' => $menuItems
             ]);
             NavBar::end();
             ?>
