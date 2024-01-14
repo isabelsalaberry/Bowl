@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <div class="form-group">
         <div class="col-lg-offset-2 col-lg-10">
-            <?= Html::submitButton('Register', ['class' => 'btn btn-success']) ?>
+            <?= Html::submitButton('Register', ['class' => 'btn btn-primary']) ?>
 
             <br/><br/>
             <?= Html::a(Yii::t('user', 'Login'), ["/utilizador/login"]) ?>

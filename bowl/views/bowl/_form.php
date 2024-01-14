@@ -77,7 +77,7 @@ $this->registerCssFile('@web/css/tables.css');
     ]); ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Adicionar ao Carrinho', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Adicionar ao Carrinho', ['class' => 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
